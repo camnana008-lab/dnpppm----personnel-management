@@ -1,0 +1,99 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "System user with role-based access control.",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "role": { "type": "string", "enum": ["Super Admin", "Admin", "Super User", "Edit", "User"] },
+        "displayName": { "type": "string" },
+        "photoUrl": { "type": "string" }
+      },
+      "required": ["username", "role", "displayName"]
+    },
+    "StaffProfile": {
+      "title": "Staff Profile",
+      "description": "Detailed personnel record for National Police staff.",
+      "type": "object",
+      "properties": {
+        "staffId": { "type": "string" },
+        "nameKh": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "gender": { "type": "string", "enum": ["Male", "Female", "ប្រុស", "ស្រី"] },
+        "dob": { "type": "string" },
+        "position": { "type": "string" },
+        "title": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "institution": {
+          "type": "object",
+          "properties": {
+            "ministry": { "type": "string" },
+            "generalDept": { "type": "string" },
+            "department": { "type": "string" },
+            "office": { "type": "string" }
+          }
+        },
+        "employmentHistory": { "type": "array", "items": { "$ref": "StaffHistoryItem" } },
+        "educationHistory": { "type": "array", "items": { "$ref": "EducationItem" } },
+        "positionHistory": { "type": "array", "items": { "$ref": "StaffHistoryItem" } },
+        "titleHistory": { "type": "array", "items": { "$ref": "StaffHistoryItem" } },
+        "awardsHistory": { "type": "array", "items": { "$ref": "StaffHistoryItem" } },
+        "disciplineHistory": { "type": "array", "items": { "$ref": "StaffHistoryItem" } },
+        "workHistory": { "type": "array", "items": { "$ref": "WorkHistoryItem" } }
+      },
+      "required": ["staffId", "nameKh", "nameEn", "gender", "dob", "position"]
+    },
+    "StaffHistoryItem": {
+      "title": "Staff History Item",
+      "description": "A record of employment, position, or award history.",
+      "type": "object",
+      "properties": {
+        "docNumber": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string" },
+        "note": { "type": "string" },
+        "attachmentName": { "type": "string" }
+      },
+      "required": ["docNumber", "date", "status"]
+    },
+    "EducationItem": {
+      "title": "Education Item",
+      "description": "A record of educational attainment.",
+      "type": "object",
+      "properties": {
+        "degree": { "type": "string" },
+        "major": { "type": "string" },
+        "school": { "type": "string" },
+        "year": { "type": "string" },
+        "attachmentName": { "type": "string" }
+      },
+      "required": ["degree", "major", "school", "year"]
+    },
+    "WorkHistoryItem": {
+      "title": "Work History Item",
+      "description": "A record of previous work experience.",
+      "type": "object",
+      "properties": {
+        "organization": { "type": "string" },
+        "role": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "attachmentName": { "type": "string" }
+      },
+      "required": ["organization", "role", "startDate", "endDate"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "System user profiles."
+    },
+    "/staff": {
+      "schema": "StaffProfile",
+      "description": "Collection of all staff personnel records."
+    }
+  }
+}

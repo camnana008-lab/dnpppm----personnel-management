@@ -1,0 +1,9 @@
+{
+  "name": "DNPPPM - National Police Personnel Management",
+  "description": "A comprehensive personnel management system for the Department of National Police Personnel Management.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

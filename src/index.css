@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Battambang:wght@400;700&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Kantumruy Pro", "Inter", sans-serif;
+  --font-khmer: "Battambang", "Inter", sans-serif;
+  --font-body: "Battambang", "Inter", sans-serif;
+
+  --color-on-surface-variant: #586064;
+  --color-primary-fixed-dim: #afd9ff;
+  --color-error-dim: #4e0309;
+  --color-secondary-fixed-dim: #c5d7e4;
+  --color-primary-fixed: #cce5ff;
+  --color-primary-dim: #24567a;
+  --color-inverse-surface: #0c0f10;
+  --color-inverse-on-surface: #9b9d9e;
+  --color-secondary-fixed: #d3e5f2;
+  --color-surface-container-low: #f1f4f6;
+  --color-error: #9f403d;
+  --color-surface-container-highest: #dbe4e7;
+  --color-inverse-primary: #a5d4fd;
+  --color-surface-variant: #dbe4e7;
+  --color-tertiary-fixed-dim: #c0c8e6;
+  --color-background: #ffffff;
+  --color-secondary-container: #d3e5f2;
+  --color-on-secondary-fixed-variant: #4d5e69;
+  --color-surface-tint: #326286;
+  --color-on-primary: #f4f8ff;
+  --color-on-primary-container: #245679;
+  --color-error-container: #fe8983;
+  --color-on-surface: #2b3437;
+  --color-surface: #ffffff;
+  --color-on-tertiary-container: #424a63;
+  --color-on-tertiary-fixed-variant: #4b546d;
+  --color-on-primary-fixed: #074365;
+  --color-surface-dim: #d1dce0;
+  --color-on-tertiary: #f9f8ff;
+  --color-primary-container: #cce5ff;
+  --color-on-secondary-container: #43545f;
+  --color-outline-variant: #abb3b7;
+  --color-outline: #737c7f;
+  --color-tertiary: #565e78;
+  --color-surface-container-lowest: #ffffff;
+  --color-tertiary-dim: #4a526c;
+  --color-on-error: #fff7f6;
+  --color-on-background: #2b3437;
+  --color-surface-bright: #f8f9fa;
+  --color-secondary-dim: #455560;
+  --color-on-primary-fixed-variant: #2f6083;
+  --color-primary: #326286;
+  --color-tertiary-fixed: #ced6f5;
+  --color-on-tertiary-fixed: #2f374f;
+  --color-secondary: #50616c;
+  --color-on-secondary-fixed: #31414c;
+  --color-surface-container: #eaeff1;
+  --color-on-secondary: #f4faff;
+  --color-surface-container-high: #e3e9ec;
+  --color-tertiary-container: #ced6f5;
+  --color-on-error-container: #752121;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body;
+  }
+}
+
+.khmer-font {
+  @apply font-headline;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+}
+
+/* React Datepicker Custom Styles */
+.react-datepicker {
+  border: none !important;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  font-family: var(--font-sans) !important;
+  @apply bg-white dark:bg-slate-800 dark:text-slate-200 transition-colors;
+}
+
+.react-datepicker__header {
+  background-color: var(--color-primary) !important;
+  border: none !important;
+  padding-top: 1rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.dark .react-datepicker__header {
+  background-color: #1e293b !important; /* slate-800 */
+  border-bottom: 1px solid #334155 !important; /* slate-700 */
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__year-read-view--selected-year,
+.react-datepicker__month-read-view--selected-month {
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.react-datepicker__day {
+  @apply text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+}
+
+.dark .react-datepicker__day--selected,
+.dark .react-datepicker__day--keyboard-selected {
+  background-color: #38bdf8 !important; /* sky-400 */
+  color: #0f172a !important; /* slate-900 */
+}
+
+.react-datepicker__day--outside-month {
+  @apply text-slate-300 dark:text-slate-600;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: white !important;
+}
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow {
+  border-color: white !important;
+}
+
+.react-datepicker__year-dropdown,
+.react-datepicker__month-dropdown {
+  background-color: white !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1) !important;
+  border-radius: 0.75rem !important;
+  @apply dark:bg-slate-800 dark:border-slate-700;
+}
+
+.dark .react-datepicker__year-option,
+.dark .react-datepicker__month-option {
+  @apply text-slate-300 hover:bg-slate-700;
+}
+
+.react-datepicker__year-option:hover,
+.react-datepicker__month-option:hover {
+  background-color: rgba(50, 98, 134, 0.1) !important;
+}
+
+.dark .react-datepicker__year-option:hover,
+.dark .react-datepicker__month-option:hover {
+  background-color: rgba(56, 189, 248, 0.1) !important;
+}
